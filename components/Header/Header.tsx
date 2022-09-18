@@ -1,8 +1,9 @@
-import CategoryMenu from '../CategoryMenu/CategoryMenu';
-import Image from 'next/image';
-import classes from './Header.module.css';
-import Link from 'next/link';
-import AccountButton from '../AccountButton';
+import CategoryMenu from '../CategoryMenu/CategoryMenu'
+import Image from 'next/image'
+import classes from './Header.module.css'
+import Link from 'next/link'
+import AccountButton from '../AccountButton'
+import CartButton from '../CartButton'
 
 function Header() {
     return (
@@ -10,7 +11,10 @@ function Header() {
             <div className={classes.left}>
                 <div className={classes.siteLogo}>
                     <Link href={'/'}>
-                        <Image src={require('../../assets/fakestorelogo.png')} alt={'Website logo'}/>
+                        <Image
+                            src={require('../../assets/fakestorelogo.png')}
+                            alt={'Website logo'}
+                        />
                     </Link>
                 </div>
                 <CategoryMenu />
@@ -18,9 +22,11 @@ function Header() {
             <div className={classes.right}>
                 <AccountButton />
             </div>
-            
+            <div className={classes.right}>
+                <CartButton />
+            </div>
         </div>
     )
 }
 
-export default Header;
+export default Header

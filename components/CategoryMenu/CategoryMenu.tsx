@@ -12,7 +12,7 @@ function CategoryMenu() {
                 <CategoryTile key={category} name={category} />
             ))}
         </div>
-    )
+    );
 }
 
 export default CategoryMenu;

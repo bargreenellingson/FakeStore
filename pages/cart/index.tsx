@@ -1,16 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { selectCart, deleteFromCart } from 'store/slices/cart'
-import classes from './cart.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCart, deleteFromCart } from 'store/slices/cart';
+import classes from './cart.module.css';
 
 export default function Cart() {
-    const cart = useSelector(selectCart)
-    const dispatch: any = useDispatch()
-    console.log('cart', cart)
+    const cart = useSelector(selectCart);
+    const dispatch: any = useDispatch();
+    console.log('cart', cart);
 
     return (
         <div>
-            {cart.map((product) => (
-                <div className={classes.product}>
+            {cart.map((index, product) => (
+                <div key={index} className={classes.product}>
                     <div>
                         <picture>
                             <source
@@ -41,5 +41,5 @@ export default function Cart() {
                 </div>
             ))}
         </div>
-    )
+    );
 }

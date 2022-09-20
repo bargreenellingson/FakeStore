@@ -1,79 +1,74 @@
-import ProductTile from 'components/ProductTile'
-import { useEffect, useState } from 'react'
-import classes from './Catalog.module.css'
+import ProductTile from 'components/ProductTile';
+import { useEffect, useState } from 'react';
+import classes from './Catalog.module.css';
 
 interface CatalogProps {
-    name: string
-    products: any[]
+    name: string;
+    products: any[];
 }
 
 interface FilterRanges {
-    min: number
-    max: number
+    min: number;
+    max: number;
 }
 
 function Catalog(props: CatalogProps) {
-    const { name, products } = props
+    const { name, products } = props;
 
-    const [productSearch, setProductSearch] = useState([...products])
+    const [productSearch, setProductSearch] = useState([...products]);
     const [filterRanges, setFilterRanges] = useState({
         min: 0,
         max: 1000,
-    })
+    });
 
     useEffect(() => {
-        setProductSearch([...products])
-    }, [products])
+        setProductSearch([...products]);
+    }, [products]);
 
     const handleSort = (sort, property) => {
         const sortedProducts = [...products].sort((a, b) => {
             if (property === 'rating') {
                 if (sort === 'asc') {
-                    return a['rating']['rate'] - b['rating']['rate']
+                    return a['rating']['rate'] - b['rating']['rate'];
                 } else if (sort === 'desc') {
-                    return b['rating']['rate'] - a['rating']['rate']
+                    return b['rating']['rate'] - a['rating']['rate'];
                 }
             } else {
                 if (sort === 'asc') {
-                    return a['price'] - b['price']
+                    return a['price'] - b['price'];
                 } else if (sort === 'desc') {
-                    return b['price'] - a['price']
+                    return b['price'] - a['price'];
                 }
             }
-        })
+        });
 
-        setProductSearch(sortedProducts)
-    }
+        setProductSearch(sortedProducts);
+    };
 
-    const handleSortLowToHigh = () => {
-        const lowToHigh = [...products].sort((a, b) => a.price - b.price)
-        setProductSearch(lowToHigh)
-    }
+    const handleRatingFilter = min => {
+        const lowestRatingProducts = [...products].filter(product => {
+            return product.rating.rate >= min;
+        });
+        setProductSearch(lowestRatingProducts);
+    };
 
-    const handleRatingFilter = (min) => {
-        const lowestRatingProducts = [...products].filter((product) => {
-            return product.rating.rate >= min
-        })
-        setProductSearch(lowestRatingProducts)
-    }
-
-    const onChange = (e) => {
+    const onChange = e => {
         setFilterRanges({
             ...filterRanges,
             [e.target.name]: e.target.value,
-        } as { [K in keyof FilterRanges]: FilterRanges[K] })
-    }
+        } as { [K in keyof FilterRanges]: FilterRanges[K] });
+    };
 
-    const onFilterSubmit = (e) => {
-        e.preventDefault()
-        const filteredProducts = [...productSearch].filter((product) => {
+    const onFilterSubmit = e => {
+        e.preventDefault();
+        const filteredProducts = [...productSearch].filter(product => {
             return (
                 product.price >= filterRanges.min &&
                 product.price <= filterRanges.max
-            )
-        })
-        setProductSearch(filteredProducts)
-    }
+            );
+        });
+        setProductSearch(filteredProducts);
+    };
 
     return (
         <div className={classes.catalog}>
@@ -166,13 +161,13 @@ function Catalog(props: CatalogProps) {
                     </div>
                 </div>
                 <div className={classes.catalogProducts}>
-                    {productSearch.map((product) => (
+                    {productSearch.map(product => (
                         <ProductTile key={product.id} product={product} />
                     ))}
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Catalog
+export default Catalog;

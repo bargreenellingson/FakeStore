@@ -1,9 +1,9 @@
-import CategoryMenu from '../CategoryMenu/CategoryMenu'
-import Image from 'next/image'
-import classes from './Header.module.css'
-import Link from 'next/link'
-import AccountButton from '../AccountButton'
-import CartButton from '../CartButton'
+import CategoryMenu from '../CategoryMenu/CategoryMenu';
+import Image from 'next/image';
+import classes from './Header.module.css';
+import Link from 'next/link';
+import AccountButton from '../AccountButton';
+import CartButton from '../CartButton';
 
 function Header() {
     return (
@@ -26,7 +26,7 @@ function Header() {
                 <CartButton />
             </div>
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;

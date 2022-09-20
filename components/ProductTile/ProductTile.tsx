@@ -1,19 +1,18 @@
-import Image from 'next/image'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectLoginToken } from 'store/slices/app'
-import { addToCart } from 'store/slices/cart'
-import formatPrice from 'util/formatPrice'
-import classes from './ProductTile.module.css'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoginToken } from 'store/slices/app';
+import { addToCart } from 'store/slices/cart';
+import formatPrice from 'util/formatPrice';
+import classes from './ProductTile.module.css';
 
 interface ProductTileProps {
-    product: any
+    product: any;
 }
 
 function ProductTile(props: ProductTileProps) {
-    const { product } = props
-    const isLoggedIn = !!useSelector(selectLoginToken)
-    const dispatch: any = useDispatch()
+    const { product } = props;
+    const isLoggedIn = !!useSelector(selectLoginToken);
+    const dispatch: any = useDispatch();
 
     return (
         <div className={classes.productTile}>
@@ -36,7 +35,7 @@ function ProductTile(props: ProductTileProps) {
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
-export default ProductTile
+export default ProductTile;

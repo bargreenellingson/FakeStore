@@ -1,12 +1,11 @@
-import Link from 'next/link'
-import { User } from 'react-feather'
-import { useDispatch, useSelector } from 'react-redux'
-import classes from './AccountButton.module.css'
-import { selectLoginToken } from 'store/slices/app'
+import Link from 'next/link';
+import { User } from 'react-feather';
+import { useSelector } from 'react-redux';
+import classes from './AccountButton.module.css';
+import { selectLoginToken } from 'store/slices/app';
 
 function AccountButton() {
-    const isLoggedIn = !!useSelector(selectLoginToken)
-    const dispatch = useDispatch()
+    const isLoggedIn = !!useSelector(selectLoginToken);
 
     return (
         <Link href="/signin">
@@ -15,7 +14,7 @@ function AccountButton() {
                 {isLoggedIn ? <>Logged In</> : <>Sign In</>}
             </div>
         </Link>
-    )
+    );
 }
 
-export default AccountButton
+export default AccountButton;

@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import { selectCartCount } from '../../store/slices/cart'
-import { useSelector } from 'react-redux'
+import Link from 'next/link';
+import { selectCartCount } from '../../store/slices/cart';
+import { useSelector } from 'react-redux';
 
 function CartButton() {
-    const cartCount = useSelector(selectCartCount)
+    const cartCount = useSelector(selectCartCount);
 
     return (
         <>
@@ -12,7 +12,7 @@ function CartButton() {
             </Link>
             <>{cartCount}</>
         </>
-    )
+    );
 }
 
-export default CartButton
+export default CartButton;

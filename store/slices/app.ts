@@ -13,7 +13,7 @@ export const appSlice = createSlice({
         loginUser: (state, action) => {
             state.token = action.payload.token;
         },
-        signOutUser: state => {
+        signOutUser: (state) => {
             state.token = null;
         },
     },
@@ -22,7 +22,7 @@ export const appSlice = createSlice({
 export const { setCategories } = appSlice.actions;
 export const { loginUser, signOutUser } = appSlice.actions;
 
-export const login = () => dispatch => {
+export const login = (username, password) => (dispatch) => {
     //   // TODO: implement a mock login flow by storing a token from 'https://fakestoreapi.com/auth/login'
     //   fetch("https://fakestoreapi.com/auth/login", {
     //     method: "POST",
@@ -49,17 +49,17 @@ export const login = () => dispatch => {
     );
 };
 
-export const signOut = () => dispatch => {
+export const signOut = () => (dispatch) => {
     return dispatch(signOutUser());
 };
 
-export const getAndSetCategories = () => dispatch => {
+export const getAndSetCategories = () => (dispatch) => {
     fetch('https://fakestoreapi.com/products/categories')
-        .then(res => res.json())
-        .then(data => dispatch(setCategories(data)));
+        .then((res) => res.json())
+        .then((data) => dispatch(setCategories(data)));
 };
 
-export const selectCategories = state => state.app.categories;
-export const selectLoginToken = state => state.app.token;
+export const selectCategories = (state) => state.app.categories;
+export const selectLoginToken = (state) => state.app.token;
 
 export default appSlice.reducer;

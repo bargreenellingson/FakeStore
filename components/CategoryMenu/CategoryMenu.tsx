@@ -8,7 +8,7 @@ function CategoryMenu() {
 
     return (
         <div className={classes.categoryMenu}>
-            {categories?.map(category => (
+            {categories?.map((category) => (
                 <CategoryTile key={category} name={category} />
             ))}
         </div>

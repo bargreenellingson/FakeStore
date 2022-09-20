@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint components/ pages/ store/ util/",
     "format": "prettier components/ pages/ store/ util/ styles/ --write"
   },
   "dependencies": {

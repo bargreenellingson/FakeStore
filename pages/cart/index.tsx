@@ -5,7 +5,6 @@ import classes from './cart.module.css';
 export default function Cart() {
     const cart = useSelector(selectCart);
     const dispatch: any = useDispatch();
-    console.log('cart', cart);
 
     return (
         <div>

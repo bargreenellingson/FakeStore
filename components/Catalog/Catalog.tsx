@@ -45,23 +45,23 @@ function Catalog(props: CatalogProps) {
         setProductSearch(sortedProducts);
     };
 
-    const handleRatingFilter = min => {
-        const lowestRatingProducts = [...products].filter(product => {
+    const handleRatingFilter = (min) => {
+        const lowestRatingProducts = [...products].filter((product) => {
             return product.rating.rate >= min;
         });
         setProductSearch(lowestRatingProducts);
     };
 
-    const onChange = e => {
+    const onChange = (e) => {
         setFilterRanges({
             ...filterRanges,
             [e.target.name]: e.target.value,
         } as { [K in keyof FilterRanges]: FilterRanges[K] });
     };
 
-    const onFilterSubmit = e => {
+    const onFilterSubmit = (e) => {
         e.preventDefault();
-        const filteredProducts = [...productSearch].filter(product => {
+        const filteredProducts = [...productSearch].filter((product) => {
             return (
                 product.price >= filterRanges.min &&
                 product.price <= filterRanges.max
@@ -161,7 +161,7 @@ function Catalog(props: CatalogProps) {
                     </div>
                 </div>
                 <div className={classes.catalogProducts}>
-                    {productSearch.map(product => (
+                    {productSearch.map((product) => (
                         <ProductTile key={product.id} product={product} />
                     ))}
                 </div>

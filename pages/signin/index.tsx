@@ -25,8 +25,6 @@ export default function SignIn() {
 
     function onSubmit(e) {
         e.preventDefault();
-        console.log(input);
-        // login('username', 'password')
         dispatch(login(input.username, input.password));
     }
 
@@ -51,7 +49,7 @@ export default function SignIn() {
                         value={input.password}
                     />
                 </label>
-                <button type={'submit'} onClick={e => onSubmit(e)}>
+                <button type={'submit'} onClick={(e) => onSubmit(e)}>
                     Sign In
                 </button>
             </form>

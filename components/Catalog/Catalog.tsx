@@ -25,6 +25,26 @@ function Catalog(props: CatalogProps) {
         setProductSearch([...products])
     }, [products])
 
+    const handleSort = (sort, property) => {
+        const sortedProducts = [...products].sort((a, b) => {
+            if (property === 'rating') {
+                if (sort === 'asc') {
+                    return a['rating']['rate'] - b['rating']['rate']
+                } else if (sort === 'desc') {
+                    return b['rating']['rate'] - a['rating']['rate']
+                }
+            } else {
+                if (sort === 'asc') {
+                    return a['price'] - b['price']
+                } else if (sort === 'desc') {
+                    return b['price'] - a['price']
+                }
+            }
+        })
+
+        setProductSearch(sortedProducts)
+    }
+
     const handleSortLowToHigh = () => {
         const lowToHigh = [...products].sort((a, b) => a.price - b.price)
         setProductSearch(lowToHigh)
@@ -66,18 +86,38 @@ function Catalog(props: CatalogProps) {
                         Sort by price:
                         <ul>
                             <li>
-                                <button onClick={handleSortLowToHigh}>
+                                <button
+                                    onClick={() => handleSort('asc', 'price')}
+                                >
                                     low to high
                                 </button>
                             </li>
-                            <li>high to low</li>
+                            <li>
+                                <button
+                                    onClick={() => handleSort('desc', 'price')}
+                                >
+                                    high to low
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <div>
                         Sort by rating:
                         <ul>
-                            <li>low to high</li>
-                            <li>high to low</li>
+                            <li>
+                                <button
+                                    onClick={() => handleSort('asc', 'rating')}
+                                >
+                                    low to high
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={() => handleSort('desc', 'rating')}
+                                >
+                                    high to low
+                                </button>
+                            </li>
                         </ul>
                     </div>
                     <div>

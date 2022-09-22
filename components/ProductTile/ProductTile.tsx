@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLoginToken } from 'store/slices/app';
+import { selectLoginToken } from 'store/slices/auth';
 import { addToCart } from 'store/slices/cart';
 import formatPrice from 'util/formatPrice';
 import classes from './ProductTile.module.css';

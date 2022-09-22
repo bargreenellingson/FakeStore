@@ -1,7 +1,16 @@
+.productCart {
+    display: flex;
+    justify-content: center;
+}
+
 .product {
     display: flex;
 }
 
 .productImage {
-    width: 3rem;
+    width: 5rem;
+}
+
+.productDescription {
+    padding: 20px;
 }

@@ -1,7 +1,7 @@
 import CategoryTile from './CategoryTile';
 import classes from './CategoryMenu.module.css';
 import { useSelector } from 'react-redux';
-import { selectCategories } from 'store/slices/app';
+import { selectCategories } from 'store/slices/catalog';
 
 function CategoryMenu() {
     const categories = useSelector(selectCategories);

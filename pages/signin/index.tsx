@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { login } from 'store/slices/app';
+import { login } from 'store/slices/auth';
 import { useDispatch } from 'react-redux';
 import classes from './signin.module.css';
 

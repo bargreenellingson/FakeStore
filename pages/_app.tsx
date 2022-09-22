@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import store from 'store';
 import { Provider, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAndSetCategories } from 'store/slices/app';
+import { getAndSetCategories } from 'store/slices/catalog';
 import Layout from '@/components/Layout/Layout';
 
 function DataWrapper({ children }: any) {

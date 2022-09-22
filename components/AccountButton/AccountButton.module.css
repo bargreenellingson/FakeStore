@@ -3,4 +3,5 @@
     align-items: center;
     cursor: pointer;
     padding: 1rem;
+    width: max-content;
 }

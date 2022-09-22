@@ -7,8 +7,8 @@ export default function Cart() {
     const dispatch: any = useDispatch();
 
     return (
-        <div>
-            {cart.map((index, product) => (
+        <div className={classes.productCart}>
+            {cart.map((product, index) => (
                 <div key={index} className={classes.product}>
                     <div>
                         <picture>
@@ -23,11 +23,11 @@ export default function Cart() {
                             />
                         </picture>
                     </div>
-                    <div>
+                    <div className={classes.productDescription}>
                         <div>{product.title}</div>
                         <div>{product.quantity}</div>
-                        <div>update</div>
                         <div>
+                            <button>update</button>
                             <button
                                 onClick={() =>
                                     dispatch(deleteFromCart(product.id))

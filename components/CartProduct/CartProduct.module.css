@@ -1,0 +1,11 @@
+.product {
+    display: flex;
+}
+
+.productImage {
+    width: 5rem;
+}
+
+.productDescription {
+    padding: 20px;
+}

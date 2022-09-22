@@ -57,9 +57,15 @@ export const cartSlice = createSlice({
             );
         },
         updateProductQuantityInCart: (state, action) => {
-            const newCart = [...state.cart];
-            newCart[action.payload.productIndex].quantity =
-                action.payload.quantity;
+            const newQuantity = Number(action.payload.productQuantity);
+            const newCart = [...state.cart].map((product) => {
+                if (product.id === action.payload.productId) {
+                    return {
+                        ...product,
+                        quantity: newQuantity,
+                    };
+                }
+            });
             state.cart = newCart;
         },
     },
@@ -81,10 +87,10 @@ export const deleteFromCart = (productId) => (dispatch) => {
 };
 
 export const updateQuantityInCart =
-    (productIndex, productQuantity) => (dispatch) => {
+    (productId, productQuantity) => (dispatch) => {
         return dispatch(
             updateProductQuantityInCart({
-                productIndex,
+                productId,
                 productQuantity,
             })
         );

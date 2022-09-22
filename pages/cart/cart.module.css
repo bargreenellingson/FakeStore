@@ -1,16 +1,5 @@
 .productCart {
     display: flex;
-    justify-content: center;
-}
-
-.product {
-    display: flex;
-}
-
-.productImage {
-    width: 5rem;
-}
-
-.productDescription {
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
 }

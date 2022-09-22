@@ -22,30 +22,26 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addProductToCart: (state, action) => {
-            const updatedProductQuantity = {
-                ...action.payload.product,
-                quantity: 1,
-            } as CartProduct;
-
             const isProductInCart = new Set(
                 [...state.cart].map((product) => product.id)
-            ).has(updatedProductQuantity.id);
+            ).has(action.payload.product.id);
 
             if (isProductInCart) {
-                const updatedCartWithQuantity = [...state.cart].map(
-                    (product) => {
-                        if (product.id === updatedProductQuantity.id) {
-                            return {
-                                ...product,
-                                quantity: product.quantity + 1,
-                            };
-                        }
-                        return product;
+                state.cart = [...state.cart].map((product) => {
+                    if (product.id === action.payload.product.id) {
+                        return {
+                            ...product,
+                            quantity: product.quantity + 1,
+                        };
                     }
-                );
-                state.cart = [...updatedCartWithQuantity];
+                    return product;
+                });
             } else {
-                state.cart = [...state.cart, updatedProductQuantity];
+                const productWithQuantity = {
+                    ...action.payload.product,
+                    quantity: 1,
+                } as CartProduct;
+                state.cart = [...state.cart, productWithQuantity];
             }
         },
         deleteProductFromCart: (state, action) => {
@@ -54,16 +50,17 @@ export const cartSlice = createSlice({
             );
         },
         updateProductQuantityInCart: (state, action) => {
-            const newQuantity = Number(action.payload.productQuantity);
-            const newCart = [...state.cart].map((product) => {
+            const updatedQuantity = Number(action.payload.productQuantity);
+            state.cart = [...state.cart].map((product) => {
                 if (product.id === action.payload.productId) {
                     return {
                         ...product,
-                        quantity: newQuantity,
+                        quantity: updatedQuantity,
                     };
+                } else {
+                    return product;
                 }
             });
-            state.cart = newCart;
         },
     },
 });
@@ -73,7 +70,6 @@ export const {
     deleteProductFromCart,
     updateProductQuantityInCart,
 } = cartSlice.actions;
-
 
 export const addToCart = (product) => (dispatch) => {
     return dispatch(addProductToCart({ product }));

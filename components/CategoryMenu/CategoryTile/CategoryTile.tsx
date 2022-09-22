@@ -8,14 +8,12 @@ interface CategoryProps {
 
 function Category(props: CategoryProps) {
     const { name } = props;
-    
+
     return (
         <Link href={`/products/category/${name}`}>
-            <div className={classes.categoryTile}>
-                {name}
-            </div>
+            <div className={classes.categoryTile}>{name}</div>
         </Link>
-    )
+    );
 }
 
 export default Category;

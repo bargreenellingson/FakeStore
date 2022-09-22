@@ -1,10 +1,12 @@
-import {
-    configureStore,
-} from '@reduxjs/toolkit';
-import appReducer from './slices/app';
+import { configureStore } from '@reduxjs/toolkit';
+import catalogReducer from './slices/catalog';
+import cartReducer from './slices/cart';
+import authReducer from './slices/auth';
 
 export default configureStore({
     reducer: {
-      app: appReducer,
+        catalog: catalogReducer,
+        cart: cartReducer,
+        auth: authReducer,
     },
 });

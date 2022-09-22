@@ -5,5 +5,5 @@ export default function Home() {
         <div className={classes.welcomeSplash}>
             <h1>Welcome to Fake Store</h1>
         </div>
-    )
+    );
 }

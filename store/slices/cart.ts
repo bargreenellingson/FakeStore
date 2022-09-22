@@ -21,9 +21,6 @@ export const cartSlice = createSlice({
         cart: [],
     },
     reducers: {
-        setCart: (state, action) => {
-            state.cart = action.payload;
-        },
         addProductToCart: (state, action) => {
             const updatedProductQuantity = {
                 ...action.payload.product,
@@ -72,11 +69,11 @@ export const cartSlice = createSlice({
 });
 
 export const {
-    setCart,
     addProductToCart,
     deleteProductFromCart,
     updateProductQuantityInCart,
 } = cartSlice.actions;
+
 
 export const addToCart = (product) => (dispatch) => {
     return dispatch(addProductToCart({ product }));
